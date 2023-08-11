@@ -1,13 +1,353 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --react-blue-muted: #c5eaf5;
+  --react-blue: #61dafb;
+  --header-font: "Montserrat";
+  --paragraph-font: "REM";
+  --pill-font: "Roboto Condensed";
+  --intro-background-color: #eafbff;
+  --light-gray: #f7f7f7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--header-font);
+}
+
+p {
+  font-family: var(--paragraph-font);
+}
+
+
+.article {
+  font-family: Montserrat;
+}
+
+.btn-themed {
+  background-color: var(--react-blue) !important;
+}
+
+.btn-themed-muted {
+  background-color: var(--react-blue-muted) !important;
+}
+
+.search-box::placeholder {
+  color:var(--react-blue) !important;
+  /* transition: width 4.8s ease-in-out; */
+}
+
+.card-fixed {
+  min-height: 30rem;
+  max-height: 30rem;
+}
+
+.art-preview-img {
+  width: 240px;
+  height: 240px;
+}
+
+.card-sources {
+  background-color: var(--react-blue-muted) !important;
+}
+
+.styled-back {
+  background-color: #eafbff;
+  background-image: url("../public/assets/background.svg");
+  text-align: left !important;
+}
+
+.source-pill {
+  font-family: var(--pill-font);
+  font-size: 14px;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.source-pill.pill1 {
+  background-color: #bae1ff;
+}
+.source-pill.pill2 {
+  background-color: #ffb3ba;
+}
+.source-pill.pill3 {
+  background-color: #baffc9;
+}
+.source-pill.pill4 {
+  background-color: #ffffba;
+}
+
+.no-underline {
+  text-decoration: none !important;
+}
+
+.section {
+  background-color: var(--light-gray) !important;
+}
+
+/* ------------------------- Topics ------------------------- */
+.topic {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+.topic.topic-business {
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% ) !important;
+}
+.topic-entertainment {
+  background: linear-gradient(-45deg, #EC7272 0%, #F7A76C  100% );
+}
+.topic-health {
+  background: linear-gradient(-45deg, #513252 0%, #CA4E79  100% );
+}
+.topic-science {
+  background: linear-gradient(-45deg, #5D8BF4 0%, #2628ca  100% );
+}
+.topic-sports {
+  background: linear-gradient(-45deg, #425F57 0%, #A8E890  100% );
+}
+.topic-technology {
+  background: linear-gradient(-45deg, #0B666A 0%, #35A29F  100% );
+}
+
+.topic svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.topic:hover {
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.topic__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  display: flex;
+}
+
+.topic:hover .topic__content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
+.topic__title {
+  margin: auto;
+  /* margin-top: auto; */
+  /* margin-bottom: auto; */
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.topic__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+
+topic:hover svg {
+  scale: 0;
+  transform: rotate(-45deg);
+}
+/* ------------------------- Topics ------------------------- */
+
+/* ------------------------- Article View ------------------------- */
+.band {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+
+}
+
+@media (min-width: 30em) {
+  .band {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 60em) {
+  .band{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.band-intro-heading {
+  font-family: var(--paragraph-font) !important;
+  text-align: center;
+  margin: 5px 0 20px 0;
+}
+
+@media (min-width: 60em) {
+  .band-intro-heading {
+    text-align: left;
+    padding: 10px 0  0 60px;
+  }
+}
+
+.band-card {
+  background-color: white;
+  text-decoration: none;
+  color: #444;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  /* Hover state setup */
+  position: relative;
+  top: 0;
+  transition: all .1s ease-in;
+}
+.band-card:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.band-card article {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.band-card h1 {
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.band-card p {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.band-card span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin: 2em 0 0 0;
+}
+
+.band-card .thumb {
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (min-width: 60em) {
+  .item-1 {
+    grid-column: 1/span 2;
+  }
+  .item-1 {
+    font-size: 24px;
+  }
+}
+/* ------------------------- Article View ------------------------- */
+
+/* ------------------------- Custom glowing button --------------- */
+.button-nav {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 12px;
+  font-family: var(--header-font) !important;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+
+ .button-nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+
+ .button-nav:hover {
+  color: var(--react-blue);
+ }
+
+ .button-nav:hover::before {
+  width: 100%;
+ }
+/* ------------------------- Custom glowing button --------------- */
+
+@media only screen and (max-width: 990px) {
+  #intro-img {
+    margin: auto;
+    margin-left: 14vw ;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  #intro-img {
+    margin: auto;
+    margin-left: 12vw ;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container .topic-row {
+    padding: 0 12vh 0 12vh;
+    /* margin-left: ; */
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container .topic-row {
+    padding: 0 5vh 0 5vh;
+    /* margin-left: ; */
+  }
+}
+@media only screen and (max-width: 570px) {
+  #intro-img {
+    margin: auto;
+    margin-left: 10vw ;
+  }
 }
